@@ -81,19 +81,19 @@ const Foo = withHooks(h => {
     count: 0
   })
 
-  const double = useComputed(() => data.count * 2)
+  const double = useComputed( function() { return data.count * 2 } )
 
-  useWatch(() => data.count, (val, prevVal) => {
+  useWatch( function() { data.count }, function(val, prevVal) {
     console.log(`count is: ${val}`)
   })
 
-  useMounted(() => {
+  useMounted( function() {
     console.log('mounted!')
   })
-  useUpdated(() => {
+  useUpdated( function() {
     console.log('updated!')
   })
-  useDestroyed(() => {
+  useDestroyed( function() {
     console.log('destroyed!')
   })
 
@@ -126,7 +126,7 @@ new Vue({
       count: 0
     })
 
-    const double = useComputed(() => data.count * 2)
+    const double = useComputed( function() { return data.count * 2 })
 
     return {
       data,
